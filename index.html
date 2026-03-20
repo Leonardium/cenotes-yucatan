@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contaminación de los cenotes en Yucatán</title>
+  <meta name="description" content="Sitio web en HTML sobre la contaminación de los cenotes en Yucatán, sus causas, riesgos y acciones para su cuidado." />
+  <style>
+    :root{
+      --bg:#06161a;
+      --bg-soft:#0d2228;
+      --card:#102a31;
+      --card-2:#133740;
+      --text:#ecf7f6;
+      --muted:#b5d2cf;
+      --accent:#34d1bf;
+      --accent-2:#65e6d8;
+      --accent-3:#7bb6ff;
+      --warning:#ffd166;
+      --danger:#ff7b7b;
+      --ok:#7be495;
+      --shadow:0 10px 30px rgba(0,0,0,.25);
+      --radius:22px;
+      --max:1180px;
+    }
+
+    *{box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{
+      margin:0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(101,230,216,.08), transparent 24%),
+        linear-gradient(180deg, #071215 0%, #0a1d22 100%);
+      color:var(--text);
+      line-height:1.6;
+    }
+
+    a{
+      color:var(--accent-2);
+      text-decoration:none;
+    }
+    a:hover{ text-decoration:underline; }
+
+    .container{
+      width:min(92%, var(--max));
+      margin:auto;
+    }
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter: blur(10px);
+      background:rgba(6,22,26,.72);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+
+    .nav{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:16px;
+      padding:14px 0;
+    }
+
+    .brand{
+      font-weight:800;
+      letter-spacing:.4px;
+      font-size:1rem;
+      color:var(--accent-2);
+    }
+
+    .menu{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+      font-size:.95rem;
+    }
+
+    .menu a{
+      color:var(--text);
+      opacity:.9;
+    }
+
+    .hero{
+      min-height:88vh;
+      display:grid;
+      place-items:center;
+      padding:54px 0 26px;
+    }
+
+    .hero-box{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:28px;
+      align-items:center;
+    }
+
+    .hero-card,
+    .hero-image{
+      background:linear-gradient(180deg, rgba(16,42,49,.92), rgba(8,24,28,.95));
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+
+    .hero-card{
+      padding:42px;
+    }
+
+    .eyebrow{
+      display:inline-block;
+      padding:8px 14px;
+      border-radius:999px;
+      background:rgba(52,209,191,.12);
+      border:1px solid rgba(52,209,191,.28);
+      color:var(--accent-2);
+      font-size:.9rem;
+      margin-bottom:18px;
+    }
+
+    h1,h2,h3{
+      line-height:1.15;
+      margin:0 0 14px;
+    }
+
+    h1{
+      font-size:clamp(2.2rem, 5vw, 4.4rem);
+      letter-spacing:-1px;
+    }
+
+    .subtitle{
+      font-size:1.15rem;
+      color:var(--muted);
+      max-width:60ch;
+      margin-bottom:22px;
+    }
+
+    .quote{
+      font-size:1.05rem;
+      font-style:italic;
+      color:#d9f7f3;
+      padding:16px 18px;
+      border-left:4px solid var(--accent);
+      background:rgba(255,255,255,.04);
+      border-radius:12px;
+      margin-top:18px;
+    }
+
+    .hero-image img{
+      width:100%;
+      height:100%;
+      min-height:470px;
+      object-fit:cover;
+      display:block;
+      filter:saturate(1.03) contrast(1.03);
+    }
+
+    section{
+      padding:34px 0;
+    }
+
+    .section-title{
+      font-size:clamp(1.7rem, 3vw, 2.5rem);
+      margin-bottom:10px;
+    }
+
+    .section-intro{
+      color:var(--muted);
+      max-width:78ch;
+      margin-bottom:26px;
+    }
+
+    .grid-3{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .grid-2{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:18px;
+    }
+
+    .card{
+      background:linear-gradient(180deg, var(--card), var(--bg-soft));
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:20px;
+      padding:24px;
+      box-shadow:var(--shadow);
+    }
+
+    .card h3{
+      font-size:1.18rem;
+      margin-bottom:10px;
+    }
+
+    .card p, .card li{
+      color:var(--muted);
+    }
+
+    .tag{
+      display:inline-block;
+      margin-bottom:12px;
+      font-size:.82rem;
+      color:var(--accent-2);
+      background:rgba(101,230,216,.09);
+      border:1px solid rgba(101,230,216,.18);
+      padding:6px 10px;
+      border-radius:999px;
+    }
+
+    .stat{
+      font-size:2.6rem;
+      font-weight:900;
+      color:var(--accent-2);
+      margin:10px 0 2px;
+    }
+
+    .small{
+      font-size:.92rem;
+      color:var(--muted);
+    }
+
+    .chart-card{
+      background:linear-gradient(180deg, #0f2930, #091b20);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:22px;
+      padding:24px;
+      box-shadow:var(--shadow);
+    }
+
+    .chart-card h3{
+      margin-bottom:8px;
+      font-size:1.2rem;
+    }
+
+    .chart-caption{
+      color:var(--muted);
+      font-size:.95rem;
+      margin-bottom:22px;
+    }
+
+    .bar-group{
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+      margin-top:14px;
+    }
+
+    .bar-row{
+      display:grid;
+      grid-template-columns: 180px 1fr 70px;
+      align-items:center;
+      gap:14px;
+    }
+
+    .bar-label{
+      color:#e8f8f7;
+      font-size:.96rem;
+    }
+
+    .bar-track{
+      width:100%;
+      height:20px;
+      border-radius:999px;
+      background:rgba(255,255,255,.08);
+      overflow:hidden;
+      position:relative;
+    }
+
+    .bar-fill{
+      height:100%;
+      border-radius:999px;
+      background:linear-gradient(90deg, var(--accent), var(--accent-3));
+    }
+
+    .bar-value{
+      text-align:right;
+      color:var(--text);
+      font-weight:700;
+      font-size:.95rem;
+    }
+
+    .comparison{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+      align-items:end;
+      margin-top:22px;
+    }
+
+    .pillars{
+      background:rgba(255,255,255,.04);
+      border-radius:18px;
+      padding:18px;
+    }
+
+    .pillar{
+      margin-bottom:14px;
+    }
+
+    .pillar:last-child{margin-bottom:0;}
+
+    .mini-title{
+      font-size:.95rem;
+      margin-bottom:7px;
+      color:#ebffff;
+    }
+
+    .legend{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px 16px;
+      margin-top:16px;
+      color:var(--muted);
+      font-size:.9rem;
+    }
+
+    .dot{
+      width:11px;
+      height:11px;
+      border-radius:50%;
+      display:inline-block;
+      margin-right:7px;
+      vertical-align:middle;
+    }
+
+    .gallery{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:18px;
+    }
+
+    figure{
+      margin:0;
+      overflow:hidden;
+      border-radius:20px;
+      background:var(--card);
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:var(--shadow);
+    }
+
+    figure img{
+      width:100%;
+      height:320px;
+      object-fit:cover;
+      display:block;
+    }
+
+    figcaption{
+      padding:14px 16px 18px;
+      color:var(--muted);
+      font-size:.94rem;
+    }
+
+    .sources{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:18px;
+    }
+
+    .source-list{
+      list-style:none;
+      padding:0;
+      margin:0;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+
+    .source-list li{
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.06);
+      border-radius:16px;
+      padding:14px 16px;
+    }
+
+    .source-list span{
+      display:block;
+      color:var(--muted);
+      font-size:.9rem;
+      margin-top:4px;
+    }
+
+    footer{
+      margin-top:30px;
+      border-top:1px solid rgba(255,255,255,.08);
+      padding:30px 0 50px;
+      color:var(--muted);
+      font-size:.95rem;
+    }
+
+    .footer-note{
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+      padding:18px;
+      border-radius:18px;
+    }
+
+    @media (max-width: 980px){
+      .hero-box,
+      .grid-3,
+      .grid-2,
+      .gallery,
+      .sources,
+      .comparison{
+        grid-template-columns:1fr;
+      }
+
+      .hero-image img{min-height:320px;}
+
+      .bar-row{
+        grid-template-columns:1fr;
+        gap:8px;
+      }
+    }
+
+    @media (max-width: 640px){
+      .hero-card{padding:26px;}
+      .menu{display:none;}
+      h1{font-size:2.2rem;}
+      .subtitle{font-size:1rem;}
+      figure img{height:240px;}
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container nav">
+      <div class="brand">Cenotes de Yucatán</div>
+      <nav class="menu">
+        <a href="#problema">Problema</a>
+        <a href="#causas">Causas</a>
+        <a href="#graficas">Gráficas</a>
+        <a href="#imagenes">Imágenes</a>
+        <a href="#saber-mas">Saber más</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-box">
+        <div class="hero-card">
+          <span class="eyebrow">Medio ambiente · Agua subterránea · Yucatán</span>
+          <h1>Contaminación de los cenotes en Yucatán</h1>
+          <p class="subtitle">
+            Los cenotes no son solamente postales de agua azul y piedra antigua:
+            son ventanas del acuífero y, en muchos casos, reflejos de lo que vertemos
+            sobre la tierra.
+          </p>
+
+          <div class="quote">
+            “Cuidar un cenote no es proteger un paisaje: es defender la memoria geológica,
+            la biodiversidad y el agua que sostiene la vida.”
+          </div>
+        </div>
+
+        <div class="hero-image">
+          <img
+            src="https://commons.wikimedia.org/wiki/Special:FilePath/Cenote%20en%20Yucat%C3%A1n.jpg"
+            alt="Cenote natural en Yucatán con agua clara"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section id="problema">
+      <div class="container">
+        <h2 class="section-title">¿Por qué es un problema tan delicado?</h2>
+        <p class="section-intro">
+          En Yucatán, buena parte del agua circula a través de un sistema kárstico:
+          roca caliza, grietas, filtración rápida y casi ausencia de corrientes superficiales.
+          Esa belleza geológica vuelve al acuífero especialmente vulnerable. Lo que llega al suelo
+          puede infiltrarse con relativa facilidad hacia pozos, cenotes y cuerpos conectados.
+        </p>
+
+        <div class="grid-3">
+          <article class="card">
+            <span class="tag">Vulnerabilidad</span>
+            <h3>Acuífero kárstico</h3>
+            <p>
+              La estructura caliza de la península facilita la infiltración de contaminantes.
+              Por ello, los cenotes funcionan como indicadores visibles de un problema que
+              en realidad se extiende al sistema subterráneo.
+            </p>
+          </article>
+
+          <article class="card">
+            <span class="tag">Riesgo sanitario</span>
+            <h3>Impacto en la salud</h3>
+            <p>
+              La presencia de bacterias, nutrientes, residuos orgánicos, hidrocarburos,
+              plaguicidas y compuestos emergentes puede deteriorar la calidad del agua y
+              elevar riesgos para comunidades y ecosistemas.
+            </p>
+          </article>
+
+          <article class="card">
+            <span class="tag">Patrimonio natural</span>
+            <h3>Daño ecológico y cultural</h3>
+            <p>
+              Los cenotes poseen valor histórico, turístico, biológico y espiritual.
+              Su contaminación no sólo degrada el agua: erosiona un símbolo profundo
+              de Yucatán.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="causas">
+      <div class="container">
+        <h2 class="section-title">Principales causas de contaminación</h2>
+        <p class="section-intro">
+          Diversos estudios y reportes señalan una mezcla de factores: aguas residuales mal manejadas,
+          fosas sépticas deficientes, actividad agropecuaria, plaguicidas, residuos sólidos y contaminantes
+          emergentes asociados al crecimiento urbano.
+        </p>
+
+        <div class="grid-2">
+          <article class="card">
+            <h3>Aportes domésticos y urbanos</h3>
+            <ul>
+              <li>Fosas sépticas y drenajes deficientes.</li>
+              <li>Descarga de aguas residuales al subsuelo.</li>
+              <li>Basura y lixiviados que terminan filtrándose.</li>
+              <li>Contaminantes emergentes como fármacos y productos de cuidado personal.</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>Presión agropecuaria y química</h3>
+            <ul>
+              <li>Uso de plaguicidas y fertilizantes.</li>
+              <li>Escurrimientos y filtración de nutrientes.</li>
+              <li>Materia orgánica y patógenos provenientes de actividades pecuarias.</li>
+              <li>Compuestos orgánicos persistentes detectados en el sistema acuífero.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="graficas">
+      <div class="container">
+        <h2 class="section-title">Gráficas y datos clave</h2>
+        <p class="section-intro">
+          Las siguientes visualizaciones resumen datos frecuentemente citados sobre la problemática
+          del agua subterránea y los cenotes en Yucatán.
+        </p>
+
+        <div class="grid-2">
+          <article class="chart-card">
+            <h3>Cenotes registrados con contaminación reportada</h3>
+            <p class="chart-caption">
+              Se ha reportado que alrededor del 70% de los cenotes registrados en Yucatán presentan contaminación.
+            </p>
+
+            <div class="comparison">
+              <div class="pillars">
+                <div class="pillar">
+                  <div class="mini-title">Con contaminación reportada</div>
+                  <div class="bar-track">
+                    <div class="bar-fill" style="width:70%;"></div>
+                  </div>
+                </div>
+
+                <div class="pillar">
+                  <div class="mini-title">Sin esa condición reportada</div>
+                  <div class="bar-track">
+                    <div class="bar-fill" style="width:30%; opacity:.55;"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card" style="padding:22px;">
+                <div class="small">Dato destacado</div>
+                <div class="stat">70%</div>
+                <p class="small">
+                  Proporción referida en reportes sobre cenotes registrados con afectación por bacterias,
+                  pesticidas u otras fuentes de contaminación.
+                </p>
+              </div>
+            </div>
+
+            <div class="legend">
+              <span><span class="dot" style="background:var(--accent);"></span>Con contaminación reportada</span>
+              <span><span class="dot" style="background:var(--accent-3);"></span>Resto del total referido</span>
+            </div>
+          </article>
+
+          <article class="chart-card">
+            <h3>Clasificación microbiológica del agua subterránea</h3>
+            <p class="chart-caption">
+              Distribución porcentual reportada para muestras de agua subterránea del estado de Yucatán.
+            </p>
+
+            <div class="bar-group">
+              <div class="bar-row">
+                <div class="bar-label">Aceptable</div>
+                <div class="bar-track"><div class="bar-fill" style="width:45%;"></div></div>
+                <div class="bar-value">45%</div>
+              </div>
+
+              <div class="bar-row">
+                <div class="bar-label">Contaminada</div>
+                <div class="bar-track"><div class="bar-fill" style="width:23%;"></div></div>
+                <div class="bar-value">23%</div>
+              </div>
+
+              <div class="bar-row">
+                <div class="bar-label">Peligrosa</div>
+                <div class="bar-track"><div class="bar-fill" style="width:18%;"></div></div>
+                <div class="bar-value">18%</div>
+              </div>
+
+              <div class="bar-row">
+                <div class="bar-label">Muy contaminada</div>
+                <div class="bar-track"><div class="bar-fill" style="width:14%;"></div></div>
+                <div class="bar-value">14%</div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 class="section-title">¿Qué se puede hacer?</h2>
+        <p class="section-intro">
+          La conservación de los cenotes exige una combinación de ciencia, infraestructura
+          y responsabilidad cotidiana.
+        </p>
+
+        <div class="grid-3">
+          <article class="card">
+            <h3>Mejor saneamiento</h3>
+            <p>
+              Modernizar drenajes, fosas sépticas y sistemas de tratamiento para evitar que
+              los residuos se infiltren al subsuelo.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Monitoreo constante</h3>
+            <p>
+              Medir calidad del agua, presencia de patógenos, nitratos, plaguicidas y contaminantes
+              emergentes en cenotes, pozos y zonas costeras conectadas.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Turismo y uso responsable</h3>
+            <p>
+              No arrojar basura, no usar químicos dañinos cerca de los cuerpos de agua y promover
+              prácticas de visita que no alteren el ecosistema.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="imagenes">
+      <div class="container">
+        <h2 class="section-title">Imágenes royalty free</h2>
+        <p class="section-intro">
+          Las siguientes imágenes provienen de Wikimedia Commons y pueden reutilizarse conforme
+          a sus licencias abiertas. Una está en dominio público (CC0) y otra bajo licencia abierta
+          con atribución.
+        </p>
+
+        <div class="gallery">
+          <figure>
+            <img
+              src="https://commons.wikimedia.org/wiki/Special:FilePath/Cenote%20del%20Parque%20de%20Cholul%2C%20Yucat%C3%A1n%20%2807%29.jpg"
+              alt="Cenote del Parque de Cholul, Yucatán"
+            />
+            <figcaption>
+              Cenote del Parque de Cholul, Yucatán. Imagen en Wikimedia Commons con licencia CC0
+              (dominio público).
+            </figcaption>
+          </figure>
+
+          <figure>
+            <img
+              src="https://commons.wikimedia.org/wiki/Special:FilePath/Cenote%20en%20Yucat%C3%A1n.jpg"
+              alt="Cenote profundo en Mérida, Yucatán"
+            />
+            <figcaption>
+              Cenote en Yucatán. Imagen en Wikimedia Commons con licencia CC BY-SA 4.0;
+              requiere atribución correspondiente.
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="saber-mas">
+      <div class="container">
+        <h2 class="section-title">Saber más</h2>
+        <p class="section-intro">
+          Aquí tienes enlaces útiles para profundizar en la calidad del agua subterránea,
+          la vulnerabilidad del acuífero y la contaminación de cenotes en Yucatán.
+        </p>
+
+        <div class="sources">
+          <article class="card">
+            <h3>Fuentes informativas</h3>
+            <ul class="source-list">
+              <li>
+                <a href="https://quimica.unam.mx/analizan-en-la-fq-contaminantes-en-el-acuifero-de-yucatan/" target="_blank" rel="noopener noreferrer">
+                  UNAM · Analizan contaminantes en el acuífero de Yucatán
+                </a>
+                <span>Contaminantes emergentes, plaguicidas, hidrocarburos y vulnerabilidad del acuífero.</span>
+              </li>
+              <li>
+                <a href="https://www.agua.unam.mx/noticias/2013/nacionales/not_nac_junio16_2.html" target="_blank" rel="noopener noreferrer">
+                  Agua UNAM · Mayoría de cenotes en Yucatán están contaminados
+                </a>
+                <span>Nota de divulgación sobre contaminación reportada en cenotes registrados.</span>
+              </li>
+              <li>
+                <a href="https://www.dof.gob.mx/nota_detalle_popup.php?codigo=5312870" target="_blank" rel="noopener noreferrer">
+                  Diario Oficial de la Federación · Estudios del acuífero Península de Yucatán
+                </a>
+                <span>Referencia oficial sobre disponibilidad y condiciones del agua subterránea.</span>
+              </li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>Documentos y materiales complementarios</h3>
+            <ul class="source-list">
+              <li>
+                <a href="https://files.conagua.gob.mx/conagua/generico/PNH/PHR_2021-2024_RHA_XII_Pen%C3%ADnsula_de_Yucat%C3%A1n.pdf" target="_blank" rel="noopener noreferrer">
+                  CONAGUA · Programa Hídrico Regional 2021–2024
+                </a>
+                <span>Panorama hídrico regional y contexto del agua subterránea en la península.</span>
+              </li>
+              <li>
+                <a href="https://www.gob.mx/cms/uploads/attachment/file/970255/Pen_nsula_de_Yucat_n_2012-2023.pdf" target="_blank" rel="noopener noreferrer">
+                  Diagnóstico de calidad del agua de los acuíferos de la Península de Yucatán
+                </a>
+                <span>Material técnico con indicadores y evaluación de calidad del agua subterránea.</span>
+              </li>
+              <li>
+                <a href="https://commons.wikimedia.org/wiki/Category:Cenotes_in_Yucat%C3%A1n" target="_blank" rel="noopener noreferrer">
+                  Wikimedia Commons · Categoría de cenotes en Yucatán
+                </a>
+                <span>Banco abierto de imágenes con licencias reutilizables.</span>
+              </li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-note">
+        <strong>Nota de uso:</strong> este archivo está hecho únicamente con HTML y CSS interno.
+        Puedes guardarlo como <code>index.html</code> y abrirlo directamente en tu navegador.
+        Si quieres, después puedes sustituir textos, imágenes o colores sin tocar la estructura general.
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
