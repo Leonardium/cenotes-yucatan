@@ -4,967 +4,708 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Contaminación de los cenotes en Yucatán</title>
+  <title>Contaminación de los Cenotes en Yucatán · Impacto Ambiental</title>
 
   <meta
     name="description"
-    content="Sitio web sobre la contaminación de los cenotes en Yucatán."
+    content="Un análisis crítico y estético sobre la alarmante crisis de contaminación en el acuífero subterráneo de Yucatán."
   />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,900&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
 
   <style>
-    :root{
-      --selva:#0E1411;
-      --piedra:#1C2A24;
-      --caliza:#E8E2D4;
-      --agua:#5FA89B;
-      --ambar:#C9A227;
-      --sascab:#8A6F4E;
-      --max:1180px;
+    :root {
+      --bg: #02090b;
+      --bg-surface: #061114;
+      --bg-surface-elevated: #0a191e;
+      --border: rgba(255, 255, 255, 0.05);
+      --border-glow: rgba(101, 230, 216, 0.15);
+      --text: #ecf7f6;
+      --text-muted: #8fa8a6;
+      --accent: #34d1bf;
+      --accent-glow: linear-gradient(135deg, #fff 30%, #65e6d8 100%);
+      --max: 1200px;
     }
 
-    *{
-      box-sizing:border-box;
+    * {
+      box-sizing: border-box;
+      selection-background-color: var(--accent);
     }
-
-    html{
-      scroll-behavior:smooth;
-    }
-
-    body{
-      margin:0;
-      font-family:'Source Sans 3', 'Segoe UI', sans-serif;
-      background:var(--selva);
-      color:var(--caliza);
-      line-height:1.65;
-      font-size:17px;
-    }
-
-    h1,h2,h3{
-      font-family:'Fraunces', Georgia, serif;
-      font-weight:900;
-      line-height:1.05;
-      letter-spacing:-.01em;
-      margin:0 0 .5em;
-      color:var(--caliza);
-    }
-
-    .eyebrow,
-    .tag,
-    .strata-label,
-    figcaption,
-    .video-caption{
-      font-family:'JetBrains Mono', 'Courier New', monospace;
-      letter-spacing:.06em;
-    }
-
-    a{
-      color:var(--agua);
-    }
-
-    .container{
-      width:min(92%, var(--max));
-      margin:auto;
-    }
-
-    /* ---------- DEPTH LINE (firma) ---------- */
-
-    .depth-rail{
-      position:fixed;
-      top:0;
-      left:0;
-      width:6px;
-      height:100%;
-      background:linear-gradient(
-        180deg,
-        var(--caliza) 0%,
-        var(--ambar) 18%,
-        var(--agua) 50%,
-        #0a3b36 80%,
-        var(--selva) 100%
-      );
-      z-index:200;
-    }
-
-    .depth-rail::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:repeating-linear-gradient(
-        180deg,
-        transparent 0,
-        transparent 38px,
-        rgba(0,0,0,.18) 38px,
-        rgba(0,0,0,.18) 40px
-      );
-    }
-
-    body{
-      padding-left:6px;
-    }
 
-    /* ---------- HEADER ---------- */
-
-    header{
-      position:sticky;
-      top:0;
-      z-index:100;
-      background:rgba(14,20,17,.86);
-      backdrop-filter:blur(8px);
-      border-bottom:1px solid rgba(232,226,212,.12);
-    }
-
-    .nav{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      padding:18px 0;
-    }
-
-    .brand{
-      font-family:'Fraunces', serif;
-      font-weight:900;
-      font-size:1.3rem;
-      color:var(--caliza);
-      letter-spacing:-.01em;
+    html {
+      scroll-behavior: smooth;
     }
-
-    .brand span{
-      color:var(--agua);
+
+    body {
+      margin: 0;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      background-color: var(--bg);
+      background-image: 
+        radial-gradient(circle at 80% 20%, rgba(52, 209, 191, 0.04), transparent 40%),
+        radial-gradient(circle at 20% 60%, rgba(123, 182, 255, 0.03), transparent 40%);
+      color: var(--text);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
     }
 
-    .menu{
-      display:flex;
-      gap:28px;
+    .container {
+      width: min(90%, var(--max));
+      margin: auto;
     }
 
-    .menu a{
-      color:var(--caliza);
-      text-decoration:none;
-      font-family:'JetBrains Mono', monospace;
-      font-size:.78rem;
-      letter-spacing:.1em;
-      text-transform:uppercase;
-      opacity:.7;
-      transition:opacity .2s, color .2s;
-      position:relative;
+    /* HEADER EDITORIAL */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      background: rgba(2, 9, 11, 0.75);
+      border-bottom: 1px solid var(--border);
     }
 
-    .menu a::after{
-      content:"";
-      position:absolute;
-      left:0;
-      bottom:-6px;
-      width:0;
-      height:1px;
-      background:var(--ambar);
-      transition:width .25s ease;
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
     }
 
-    .menu a:hover{
-      opacity:1;
-      color:var(--ambar);
+    .brand {
+      font-family: "Syne", sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      letter-spacing: -0.5px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
-    .menu a:hover::after{
-      width:100%;
+    .brand::before {
+      content: '';
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
     }
 
-    /* ---------- HERO ---------- */
-
-    .hero{
-      min-height:92vh;
-      display:flex;
-      align-items:flex-end;
-      position:relative;
-      overflow:hidden;
-      border-top:none;
-      padding:0;
+    .menu {
+      display: flex;
+      gap: 28px;
     }
 
-    .hero-image{
-      position:absolute;
-      inset:0;
-      z-index:-1;
+    .menu a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.3s ease, transform 0.3s ease;
     }
 
-    .hero-image img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      filter:saturate(.85) brightness(.55);
+    .menu a:hover {
+      color: var(--text);
     }
-
-    .hero-image::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:linear-gradient(
-        180deg,
-        rgba(14,20,17,.15) 0%,
-        rgba(14,20,17,.35) 45%,
-        rgba(14,20,17,.96) 100%
-      );
-    }
 
-    .hero-content{
-      position:relative;
-      z-index:1;
-      padding:60px 0 70px;
+    /* TITULARES CON GRADIENTE FLUIDO */
+    h1, h2, h3 {
+      font-family: "Syne", sans-serif;
+      line-height: 1.1;
+      margin: 0 0 16px;
+      letter-spacing: -0.03em;
     }
 
-    .strata-label{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      font-size:.78rem;
-      color:var(--ambar);
-      text-transform:uppercase;
-      margin-bottom:22px;
+    .gradient-text {
+      background: var(--accent-glow);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
-    .strata-label::before{
-      content:"";
-      width:28px;
-      height:1px;
-      background:var(--ambar);
+    /* HERO ASIMÉTRICO */
+    .hero {
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      padding: 60px 0;
     }
 
-    h1{
-      font-size:clamp(2.8rem, 7vw, 5.6rem);
-      max-width:14ch;
+    .hero-box {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 60px;
+      align-items: center;
     }
 
-    .hero-content .subtitle{
-      max-width:46ch;
-      color:rgba(232,226,212,.75);
-      font-size:1.08rem;
-      margin:18px 0 26px;
+    .hero-card {
+      padding-right: 20px;
     }
 
-    .quote{
-      max-width:50ch;
-      padding:18px 0 0 22px;
-      border-left:2px solid var(--agua);
-      font-family:'Fraunces', serif;
-      font-style:italic;
-      font-weight:400;
-      font-size:1.15rem;
-      color:var(--caliza);
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      margin-bottom: 24px;
+      font-weight: 600;
     }
-
-    /* ---------- SECTIONS / ESTRATOS ---------- */
 
-    section{
-      padding:90px 0;
-      position:relative;
-      border-top:1px solid rgba(232,226,212,.08);
+    h1 {
+      font-size: clamp(2.8rem, 6vw, 4.8rem);
+      font-weight: 800;
+      margin-bottom: 24px;
     }
 
-    section::before{
-      content:"";
-      position:absolute;
-      top:-1px;
-      left:0;
-      width:100%;
-      height:1px;
-      background:
-        repeating-linear-gradient(
-          90deg,
-          var(--sascab) 0px,
-          var(--sascab) 14px,
-          transparent 14px,
-          transparent 30px
-        );
-      opacity:.4;
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1.2rem;
+      line-height: 1.6;
+      margin-bottom: 32px;
+      max-width: 54ch;
     }
 
-    .strata-head{
-      display:grid;
-      grid-template-columns:auto 1fr;
-      align-items:start;
-      gap:24px;
-      margin-bottom:48px;
+    .quote {
+      padding: 0 0 0 24px;
+      border-left: 2px solid var(--accent);
+      color: var(--text-muted);
+      font-style: italic;
+      font-size: 1.05rem;
     }
 
-    .strata-num{
-      font-family:'JetBrains Mono', monospace;
-      font-size:.78rem;
-      color:var(--ambar);
-      writing-mode:vertical-rl;
-      text-transform:uppercase;
-      letter-spacing:.15em;
-      padding-top:6px;
+    .hero-image-wrapper {
+      position: relative;
     }
 
-    .section-title{
-      font-size:clamp(1.9rem, 4vw, 2.7rem);
+    .hero-image {
+      width: 100%;
+      height: 550px;
+      border-radius: 4px;
+      overflow: hidden;
+      border: 1px solid var(--border);
     }
 
-    .section-intro{
-      color:rgba(232,226,212,.7);
-      max-width:62ch;
-      margin-top:8px;
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(15%) contrast(105%);
+      transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
     }
 
-    /* ---------- GRIDS / CARDS ---------- */
-
-    .grid-3{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:1px;
-      background:rgba(232,226,212,.1);
-      border:1px solid rgba(232,226,212,.1);
+    .hero-image-wrapper:hover img {
+      transform: scale(1.03);
     }
 
-    .grid-2{
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:1px;
-      background:rgba(232,226,212,.1);
-      border:1px solid rgba(232,226,212,.1);
+    /* SECCIONES EDITORIALES */
+    section {
+      padding: 100px 0;
+      border-top: 1px solid var(--border);
     }
 
-    .card{
-      background:var(--piedra);
-      padding:34px 30px;
+    .section-header {
+      margin-bottom: 60px;
     }
 
-    .tag{
-      display:inline-block;
-      font-size:.72rem;
-      color:var(--agua);
-      text-transform:uppercase;
-      margin-bottom:16px;
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
     }
 
-    .card h3{
-      font-size:1.3rem;
-      margin-bottom:10px;
+    .section-intro {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 65ch;
     }
 
-    .card p{
-      color:rgba(232,226,212,.68);
-      font-size:.96rem;
+    /* BENTO GRID (REDISEÑO DE TARJETAS CRÍTICAS) */
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 24px;
     }
-
-    /* ---------- DATOS / GRAFICAS ---------- */
 
-    .chart-card{
-      background:var(--piedra);
-      padding:34px 30px;
-      position:relative;
+    .bento-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: border-color 0.4s ease, background-color 0.4s ease;
     }
 
-    .chart-card h3{
-      font-size:1.25rem;
+    .bento-card:hover {
+      border-color: var(--border-glow);
+      background: var(--bg-surface-elevated);
     }
 
-    .chart-card p{
-      color:rgba(232,226,212,.68);
-      font-size:.96rem;
-    }
+    .bento-card.large { grid-column: span 7; }
+    .bento-card.medium { grid-column: span 5; }
+    .bento-card.full { grid-column: span 12; }
 
-    .bar-track{
-      width:100%;
-      height:10px;
-      background:rgba(232,226,212,.08);
-      margin-top:20px;
-      position:relative;
+    .tag {
+      align-self: flex-start;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      padding: 4px 10px;
+      border-radius: 4px;
+      color: var(--text-muted);
+      margin-bottom: 32px;
     }
 
-    .bar-fill{
-      height:100%;
-      background:var(--ambar);
-      position:relative;
+    .bento-card h3 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 14px;
     }
 
-    .bar-fill::after{
-      content:"70%";
-      position:absolute;
-      right:-2px;
-      top:-26px;
-      font-family:'JetBrains Mono', monospace;
-      font-size:.75rem;
-      color:var(--ambar);
+    .bento-card p {
+      color: var(--text-muted);
+      margin: 0;
     }
 
-    .micro-list{
-      list-style:none;
-      margin:22px 0 0;
-      padding:0;
-      display:flex;
-      flex-direction:column;
-      gap:10px;
+    /* DASHBOARD DE DATOS / GRÁFICAS */
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 24px;
     }
 
-    .micro-list li{
-      display:flex;
-      justify-content:space-between;
-      font-family:'JetBrains Mono', monospace;
-      font-size:.85rem;
-      border-bottom:1px solid rgba(232,226,212,.08);
-      padding-bottom:8px;
-      color:rgba(232,226,212,.8);
+    .chart-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 40px;
     }
 
-    .micro-list li b{
-      color:var(--caliza);
+    .progress-container {
+      width: 100%;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 3px;
+      overflow: hidden;
+      margin-top: 30px;
     }
 
-    .impact-counter{
-      margin-top:1px;
-      padding:48px 30px;
-      background:var(--piedra);
-      text-align:center;
+    .progress-bar {
+      height: 100%;
+      background: var(--accent);
+      border-radius: 3px;
     }
 
-    .impact-counter .tag{
-      color:var(--ambar);
+    .data-list {
+      list-style: none;
+      padding: 0;
+      margin: 24px 0 0 0;
     }
 
-    .counter-number{
-      font-family:'Fraunces', serif;
-      font-size:clamp(3rem, 8vw, 5.5rem);
-      font-weight:900;
-      color:var(--caliza);
-      margin:6px 0;
-      font-variant-numeric:tabular-nums;
+    .data-list li {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.95rem;
     }
 
-    .impact-counter p{
-      color:rgba(232,226,212,.6);
-      font-size:.9rem;
-      font-family:'JetBrains Mono', monospace;
+    .data-list li span:last-child {
+      font-family: "Syne", sans-serif;
+      font-weight: 700;
+      color: var(--accent);
     }
 
-    /* ---------- VIDEO ---------- */
-
-    .video-wrapper{
-      position:relative;
-      width:100%;
-      padding-top:56.25%;
-      border:1px solid rgba(232,226,212,.12);
-      background:var(--piedra);
+    /* CONTADOR MINIMALISTA EXTREMO */
+    .minimal-counter {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 60px 40px;
+      text-align: center;
     }
 
-    .video-wrapper iframe{
-      position:absolute;
-      inset:0;
-      width:100%;
-      height:100%;
-      border:0;
+    .counter-number {
+      font-family: "Syne", sans-serif;
+      font-size: clamp(4rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 1;
+      margin: 10px 0;
+      background: var(--accent-glow);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
-    .video-caption{
-      margin-top:18px;
-      font-size:.78rem;
-      color:rgba(232,226,212,.55);
-      text-transform:uppercase;
+    /* CINEMATIC VIDEO INTERFACE */
+    .video-container {
+      max-width: 900px;
+      margin: auto;
     }
-
-    /* ---------- FAQ ---------- */
 
-    .faq-container{
-      display:flex;
-      flex-direction:column;
-      margin-top:8px;
-      border-top:1px solid rgba(232,226,212,.1);
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: #000;
     }
 
-    .faq-item{
-      border-bottom:1px solid rgba(232,226,212,.1);
+    .video-wrapper iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
     }
 
-    .faq-question{
-      width:100%;
-      background:none;
-      border:none;
-      color:var(--caliza);
-      text-align:left;
-      padding:24px 0;
-      font-family:'Fraunces', serif;
-      font-size:1.15rem;
-      font-weight:700;
-      cursor:pointer;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:20px;
+    /* PREGUNTAS FRECUENTES (MINIMALIST REFACTOR) */
+    .faq-wrapper {
+      max-width: 750px;
+      margin: auto;
     }
 
-    .faq-question::after{
-      content:"+";
-      font-family:'JetBrains Mono', monospace;
-      font-size:1.4rem;
-      color:var(--ambar);
-      flex-shrink:0;
-      transition:transform .3s ease;
+    .faq-item {
+      border-bottom: 1px solid var(--border);
     }
 
-    .faq-question.active::after{
-      transform:rotate(45deg);
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-family: "Syne", sans-serif;
+      font-weight: 700;
+      font-size: 1.15rem;
+      text-align: left;
+      padding: 30px 0;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
-    .faq-question:hover{
-      color:var(--agua);
+    .faq-question::after {
+      content: '+';
+      font-size: 1.5rem;
+      color: var(--text-muted);
+      transition: transform 0.3s ease;
     }
 
-    .faq-answer{
-      max-height:0;
-      overflow:hidden;
-      transition:max-height .35s ease, padding .35s ease;
-      color:rgba(232,226,212,.68);
-      font-size:.97rem;
+    .faq-question.active::after {
+      transform: rotate(45deg);
     }
 
-    .faq-answer.open{
-      max-height:220px;
-      padding-bottom:24px;
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), padding 0.4s ease;
+      color: var(--text-muted);
+      font-size: 1rem;
+      padding-bottom: 0;
     }
 
-    /* ---------- GALERIA ---------- */
-
-    .gallery{
-      display:grid;
-      grid-template-columns:1.3fr 1fr 1fr;
-      grid-template-rows:auto auto;
-      gap:1px;
-      background:rgba(232,226,212,.1);
-      border:1px solid rgba(232,226,212,.1);
+    .faq-answer.open {
+      max-height: 150px;
+      padding-bottom: 30px;
     }
 
-    .gallery figure:first-child{
-      grid-row:span 2;
+    /* GALERÍA DE ARTE ASIMÉTRICA */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 24px;
     }
 
-    figure{
-      margin:0;
-      overflow:hidden;
-      background:var(--piedra);
-      position:relative;
+    figure {
+      margin: 0;
+      border-radius: 4px;
+      overflow: hidden;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
     }
 
-    figure img{
-      width:100%;
-      height:100%;
-      min-height:220px;
-      object-fit:cover;
-      display:block;
-      filter:saturate(.9) brightness(.8);
-      transition:filter .4s ease, transform .6s ease;
+    figure img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      filter: grayscale(20%);
+      transition: transform 0.5s ease, filter 0.5s ease;
     }
 
-    figure:hover img{
-      filter:saturate(1) brightness(.95);
-      transform:scale(1.03);
+    figure:hover img {
+      transform: scale(1.02);
+      filter: grayscale(0%);
     }
 
-    figcaption{
-      position:absolute;
-      left:0;
-      bottom:0;
-      padding:14px 16px;
-      font-size:.74rem;
-      color:var(--caliza);
-      text-transform:uppercase;
-      background:linear-gradient(0deg, rgba(14,20,17,.85), transparent);
-      width:100%;
+    figcaption {
+      padding: 16px;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border);
     }
-
-    /* ---------- FOOTER ---------- */
 
-    footer{
-      padding:50px 0;
-      border-top:1px solid rgba(232,226,212,.1);
-      color:rgba(232,226,212,.5);
-      font-family:'JetBrains Mono', monospace;
-      font-size:.8rem;
-    }
+    .pic-1 { grid-column: span 4; }
+    .pic-2 { grid-column: span 5; }
+    .pic-3 { grid-column: span 3; }
 
-    .footer-row{
-      display:flex;
-      justify-content:space-between;
-      flex-wrap:wrap;
-      gap:10px;
+    /* FOOTER */
+    footer {
+      padding: 60px 0;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.85rem;
     }
-
-    /* ---------- RESPONSIVE ---------- */
-
-    @media(max-width:980px){
 
-      .grid-3,
-      .grid-2{
-        grid-template-columns:1fr;
+    /* RESPONSIVE DESIGN */
+    @media (max-width: 980px) {
+      .hero-box {
+        grid-template-columns: 1fr;
+        gap: 40px;
       }
-
-      .gallery{
-        grid-template-columns:1fr;
-        grid-template-rows:auto;
-      }
-
-      .gallery figure:first-child{
-        grid-row:auto;
-      }
-
-      .strata-head{
-        grid-template-columns:1fr;
-      }
-
-      .strata-num{
-        writing-mode:horizontal-tb;
-      }
-
+      .hero-image { height: 350px; }
+      .bento-card.large, .bento-card.medium { grid-column: span 12; }
+      .dashboard-grid { grid-template-columns: 1fr; }
+      .pic-1, .pic-2, .pic-3 { grid-column: span 12; }
     }
 
-    @media(max-width:640px){
-
-      .menu{
-        display:none;
-      }
-
-      section{
-        padding:60px 0;
-      }
-
+    @media (max-width: 640px) {
+      .menu { display: none; }
+      section { padding: 60px 0; }
     }
-
-    @media (prefers-reduced-motion: reduce){
-      *{
-        transition:none !important;
-        animation:none !important;
-      }
-    }
-
   </style>
 </head>
 
 <body>
 
-  <div class="depth-rail" aria-hidden="true"></div>
-
   <header>
     <div class="container nav">
-
-      <div class="brand">
-        Cenotes<span>·</span>YUC
-      </div>
-
+      <div class="brand">Cenotes de Yucatán</div>
       <nav class="menu">
         <a href="#problema">Problema</a>
         <a href="#graficas">Datos</a>
         <a href="#video">Video</a>
-        <a href="#faq">Preguntas</a>
-        <a href="#imagenes">Galería</a>
+        <a href="#faq">FAQ</a>
+        <a href="#imagenes">Imágenes</a>
       </nav>
-
     </div>
   </header>
 
   <main>
-
     <section class="hero">
-
-      <div class="hero-image">
-        <img
-          src="https://images.pexels.com/photos/3822185/pexels-photo-3822185.jpeg?auto=compress&cs=tinysrgb&w=1600"
-          alt="Cenote en Yucatán"
-        />
+      <div class="container hero-box">
+        <div class="hero-card">
+          <span class="eyebrow">Crisis del Agua Subterránea</span>
+          <h1 id="heroTitle">Contaminación de los <span class="gradient-text">cenotes</span> en Yucatán</h1>
+          <p class="subtitle">
+            Los intrincados sistemas kársticos de la península están bajo una amenaza silenciosa. Su vulnerabilidad pone en riesgo un ecosistema único en el mundo.
+          </p>
+          <div class="quote">
+            “Cuidar un cenote es proteger siglos de historia natural bajo la piedra caliza.”
+          </div>
+        </div>
+        <div class="hero-image-wrapper">
+          <div class="hero-image">
+            <img
+              src="https://images.pexels.com/photos/3822185/pexels-photo-3822185.jpeg?auto=compress&cs=tinysrgb&w=900"
+              alt="Cenote subacuático en Yucatán"
+            />
+          </div>
+        </div>
       </div>
-
-      <div class="container hero-content">
-
-        <span class="strata-label">Estrato 00 — Superficie</span>
-
-        <h1>
-          Contaminación de los cenotes en Yucatán
-        </h1>
-
-        <p class="subtitle">
-          Bajo la piedra caliza de la península corre un solo
-          acuífero. Lo que pasa en la superficie, tarde o temprano,
-          llega al agua.
-        </p>
-
-        <p class="quote">
-          Cuidar un cenote es proteger siglos de historia natural
-          bajo la piedra caliza.
-        </p>
-
-      </div>
-
     </section>
 
     <section id="problema">
-
       <div class="container">
-
-        <div class="strata-head">
-          <span class="strata-num">Estrato 01</span>
-          <div>
-            <h2 class="section-title">¿Por qué es un problema?</h2>
-            <p class="section-intro">
-              La roca caliza de Yucatán facilita la filtración de residuos
-              hacia el acuífero. Esto hace que bacterias, pesticidas
-              y contaminantes urbanos lleguen con facilidad al agua subterránea.
-            </p>
-          </div>
+        <div class="section-header">
+          <h2 class="section-title">La anatomía del <span class="gradient-text">riesgo</span></h2>
+          <p class="section-intro">La estructura porosa del suelo yucateco acelera el transporte de residuos hacia nuestras reservas fundamentales.</p>
         </div>
 
-        <div class="grid-3">
-
-          <article class="card">
-            <span class="tag">— Acuífero</span>
-            <h3>Alta vulnerabilidad</h3>
-            <p>
-              El sistema kárstico permite que los contaminantes
-              se infiltren rápidamente hacia cenotes y pozos.
-            </p>
+        <div class="bento-grid">
+          <article class="bento-card large">
+            <span class="tag">Geología Kárstica</span>
+            <div>
+              <h3>Alta vulnerabilidad</h3>
+              <p>El suelo de roca caliza carece de filtración mecánica profunda, permitiendo que químicos y aguas residuales alcancen el manto acuífero en cuestión de horas.</p>
+            </div>
           </article>
 
-          <article class="card">
-            <span class="tag">— Salud</span>
-            <h3>Riesgo sanitario</h3>
-            <p>
-              Algunos cenotes presentan bacterias,
-              residuos químicos y exceso de nutrientes.
-            </p>
+          <article class="bento-card medium">
+            <span class="tag">Salud Pública</span>
+            <div>
+              <h3>Riesgo sanitario</h3>
+              <p>Muestreos recientes confirman la presencia crítica de bacterias fecales, pesticidas organoclorados y metales pesados.</p>
+            </div>
           </article>
 
-          <article class="card">
-            <span class="tag">— Patrimonio</span>
-            <h3>Daño ecológico</h3>
-            <p>
-              Los cenotes poseen valor histórico,
-              turístico y biológico para Yucatán.
-            </p>
+          <article class="bento-card full">
+            <span class="tag">Biocultura</span>
+            <div>
+              <h3>Colapso de un ecosistema histórico</h3>
+              <p>Más allá del ecoturismo, los cenotes albergan especies endémicas ciegas y configuran el tejido místico y sagrado de las comunidades mayas contemporáneas. Su degradación es una pérdida irreversible.</p>
+            </div>
           </article>
-
         </div>
-
       </div>
-
     </section>
 
     <section id="graficas">
-
       <div class="container">
-
-        <div class="strata-head">
-          <span class="strata-num">Estrato 02</span>
-          <div>
-            <h2 class="section-title">Datos y monitoreo</h2>
-            <p class="section-intro">
-              Visualización educativa basada en reportes ambientales.
-            </p>
-          </div>
+        <div class="section-header">
+          <h2 class="section-title">El impacto en <span class="gradient-text">métricas</span></h2>
+          <p class="section-intro">Evidencia basada en monitoreos y reportes institucionales de la calidad del agua.</p>
         </div>
 
-        <div class="grid-2">
-
-          <article class="chart-card">
-            <h3>Contaminación reportada</h3>
-            <p>
-              Aproximadamente el 70% de los cenotes registrados
-              presentan algún tipo de contaminación.
-            </p>
-            <div class="bar-track">
-              <div class="bar-fill" style="width:70%;"></div>
+        <div class="dashboard-grid">
+          <article class="chart-box">
+            <h3>Afectación General</h3>
+            <p>Porcentaje estimado de cenotes censados con indicios de alteración antropogénica.</p>
+            <div class="progress-container">
+              <div class="progress-bar" style="width: 70%;"></div>
             </div>
+            <p style="margin-top: 15px; font-weight: bold; color: var(--accent);">70% del sistema comprometido</p>
           </article>
 
-          <article class="chart-card">
-            <h3>Calidad microbiológica</h3>
-            <p>
-              Diversas muestras del agua subterránea muestran niveles
-              variables de contaminación.
-            </p>
-            <ul class="micro-list">
-              <li><span>Aceptable</span><b>45%</b></li>
-              <li><span>Contaminada</span><b>23%</b></li>
-              <li><span>Peligrosa</span><b>18%</b></li>
-              <li><span>Muy contaminada</span><b>14%</b></li>
+          <article class="chart-box">
+            <h3>Calidad Microbiológica</h3>
+            <p>Distribución de las muestras evaluadas en la península:</p>
+            <ul class="data-list">
+              <li><span>Condición Aceptable</span> <span>45%</span></li>
+              <li><span>Contaminación Moderada</span> <span>23%</span></li>
+              <li><span>Umbral de Peligro</span> <span>18%</span></li>
+              <li><span>Crítica / Saturada</span> <span>14%</span></li>
             </ul>
           </article>
-
         </div>
 
-        <div class="impact-counter">
-          <span class="tag">— Monitoreo ambiental</span>
-          <h3>Cenotes con afectaciones registradas</h3>
+        <div class="minimal-counter">
+          <span class="tag" style="margin-bottom: 10px;">Monitoreo en Tiempo Real</span>
+          <h3 style="margin-bottom: 5px;">Cenotes con alteraciones biofísicas</h3>
           <div class="counter-number" id="cenoteCounter">0</div>
-          <p>Simulación visual educativa basada en monitoreo ambiental.</p>
+          <p style="color: var(--text-muted); max-width: 500px; margin: auto;">Simulación analítica con fines educativos para dimensionar la velocidad del daño ambiental.</p>
         </div>
-
       </div>
-
     </section>
 
     <section id="video">
-
       <div class="container">
+        <div class="section-header" style="text-align: center;">
+          <h2 class="section-title">Investigación <span class="gradient-text">Audiovisual</span></h2>
+          <p class="section-intro" style="margin: auto;">Un desglose técnico que expone los factores clave del deterioro ecológico y las alternativas urgentes de conservación.</p>
+        </div>
 
-        <div class="strata-head">
-          <span class="strata-num">Estrato 03</span>
-          <div>
-            <h2 class="section-title">Video</h2>
-            <p class="section-intro">
-              Material audiovisual sobre la contaminación de los cenotes en Yucatán.
-            </p>
+        <div class="video-container">
+          <div class="video-wrapper">
+            <iframe 
+              src="https://www.youtube.com/embed/LoQu3XXIayc" 
+              title="Análisis de impacto ambiental en cenotes" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+              allowfullscreen>
+            </iframe>
           </div>
         </div>
-
-        <div class="video-wrapper">
-          <iframe
-            src="https://www.youtube.com/embed/LoQu3XXIayc"
-            title="Contaminación de los cenotes en Yucatán"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-          ></iframe>
-        </div>
-
-        <p class="video-caption">— Registro en campo</p>
-
       </div>
-
     </section>
 
     <section id="faq">
-
       <div class="container">
-
-        <div class="strata-head">
-          <span class="strata-num">Estrato 04</span>
-          <div>
-            <h2 class="section-title">Preguntas frecuentes</h2>
-            <p class="section-intro">
-              Información rápida sobre los cenotes y el acuífero yucateco.
-            </p>
-          </div>
+        <div class="section-header">
+          <h2 class="section-title">Respuestas <span class="gradient-text">esenciales</span></h2>
         </div>
 
-        <div class="faq-container">
-
+        <div class="faq-wrapper">
           <div class="faq-item">
-            <button class="faq-question">
-              ¿Por qué los cenotes son tan vulnerables?
-            </button>
+            <button class="faq-question">¿Por qué es tan acelerada su degradación?</button>
             <div class="faq-answer">
-              La roca caliza permite que muchos contaminantes
-              atraviesen el suelo rápidamente.
+              Debido al relieve kárstico. La península de Yucatán no tiene ríos superficiales; toda el agua lluvia se filtra de inmediato por la roca porosa, arrastrando contaminantes directamente al flujo del que dependemos todos.
             </div>
           </div>
 
           <div class="faq-item">
-            <button class="faq-question">
-              ¿Los cenotes están conectados?
-            </button>
+            <button class="faq-question">¿Están intercomunicados los cenotes?</button>
             <div class="faq-answer">
-              Sí. Muchos forman parte de sistemas subterráneos
-              interconectados.
+              Exacto. Actúan como una inmensa red de venas subterráneas. Lo que contamina un punto turístico o agroindustrial en el norte puede viajar y manifestarse kilómetros adelante en la costa.
             </div>
           </div>
 
           <div class="faq-item">
-            <button class="faq-question">
-              ¿Qué contaminantes son comunes?
-            </button>
+            <button class="faq-question">¿Cuáles son los principales agentes nocivos?</button>
             <div class="faq-answer">
-              Bacterias, pesticidas, hidrocarburos y residuos urbanos.
+              Aguas negras sin tratamiento residencial, filtraciones masivas de granjas porcícolas industriales y el abuso de agroquímicos obsoletos en las zonas de cultivo locales.
             </div>
           </div>
-
         </div>
-
       </div>
-
     </section>
 
     <section id="imagenes">
-
       <div class="container">
-
-        <div class="strata-head">
-          <span class="strata-num">Estrato 05</span>
-          <div>
-            <h2 class="section-title">Galería</h2>
-            <p class="section-intro">
-              Fotografías royalty free de cenotes en México.
-            </p>
-          </div>
+        <div class="section-header">
+          <h2 class="section-title">Preservar el <span class="gradient-text">origen</span></h2>
         </div>
 
         <div class="gallery">
-
-          <figure>
-            <img
-              src="https://images.pexels.com/photos/3822133/pexels-photo-3822133.jpeg?auto=compress&cs=tinysrgb&w=1000"
-              alt=""
-            />
+          <figure class="pic-1">
+            <img src="https://images.pexels.com/photos/3822133/pexels-photo-3822133.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Cenote Suytun" />
             <figcaption>Cenote Suytun · Valladolid</figcaption>
           </figure>
 
-          <figure>
-            <img
-              src="https://images.pexels.com/photos/12333464/pexels-photo-12333464.jpeg?auto=compress&cs=tinysrgb&w=800"
-              alt=""
-            />
-            <figcaption>Cenote Ik Kil · Yucatán</figcaption>
+          <figure class="pic-2">
+            <img src="https://images.pexels.com/photos/12333464/pexels-photo-12333464.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Cenote Ik Kil" />
+            <figcaption>Cenote Ik Kil · Chichén Itzá</figcaption>
           </figure>
 
-          <figure>
-            <img
-              src="https://images.pexels.com/photos/12276747/pexels-photo-12276747.jpeg?auto=compress&cs=tinysrgb&w=800"
-              alt=""
-            />
-            <figcaption>Cenote en la selva · México</figcaption>
+          <figure class="pic-3">
+            <img src="https://images.pexels.com/photos/12276747/pexels-photo-12276747.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Cenote silvestre" />
+            <figcaption>Sistemas Prístinos de la Selva</figcaption>
           </figure>
-
         </div>
-
       </div>
-
     </section>
-
   </main>
 
   <footer>
-    <div class="container footer-row">
-      <span>Sitio educativo — HTML / CSS / JS</span>
-      <span>Acuífero de Yucatán — fin del recorrido</span>
+    <div class="container">
+      Desarrollo Web Editorial · Conciencia Ambiental.
     </div>
   </footer>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script>
-
-    // CONTADOR
+    // CONTADOR DINÁMICO
     let count = 0;
     const target = 700;
-    const counterEl = document.getElementById("cenoteCounter");
-
     const interval = setInterval(() => {
       count += 5;
-      counterEl.textContent = count;
+      document.getElementById("cenoteCounter").textContent = count;
       if(count >= target){
         clearInterval(interval);
       }
-    }, 20);
+    }, 15);
 
-    // FAQ
+    // ACORDEÓN FAQ (Rediseño fluido)
     const questions = document.querySelectorAll(".faq-question");
-
     questions.forEach(question => {
       question.addEventListener("click", () => {
         const answer = question.nextElementSibling;
-        answer.classList.toggle("open");
         question.classList.toggle("active");
+        answer.classList.toggle("open");
       });
     });
 
+    // GSAP EDITORIAL INTRO
+    gsap.from("#heroTitle", {
+      duration: 1.5,
+      y: 40,
+      opacity: 0,
+      ease: "power4.out"
+    });
   </script>
-
 </body>
 </html>
